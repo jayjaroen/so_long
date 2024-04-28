@@ -6,7 +6,7 @@
 #    By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 17:24:42 by jjaroens          #+#    #+#              #
-#    Updated: 2024/04/28 14:55:36 by jjaroens         ###   ########.fr        #
+#    Updated: 2024/04/28 15:19:12 by jjaroens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ LIBFT = ./libft/libft.a
 
 INCLUDE = include
 
-# HEADER = $(INCLUDE)/so_long.h
+HEADER_SO = $(INCLUDE)/so_long.h
+
 HEADER = minilibx-linux/mlx.h
 
 MLX_PATH = minilibx-linux/
@@ -34,12 +35,13 @@ all: $(NAME)
 $(LIBFT):
 	make -C ./libft
 	
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT) $(HEADER_SO)
 	make -C $(MLX_PATH)
-	$(CC) $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux -L$(MLX_PATH) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux -L$(MLX_PATH) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) 
+# linux version of MLX
 	
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -I$(HEADER) -Imlx_linux.h -O3 -c $< -o $@
+%.o: %.c $(HEADER_SO)
+	$(CC) $(CFLAGS) -I$(HEADER) -Imlx_linux.h -O3 -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
