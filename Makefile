@@ -6,13 +6,15 @@
 #    By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 17:24:42 by jjaroens          #+#    #+#              #
-#    Updated: 2024/04/28 11:44:26 by jjaroens         ###   ########.fr        #
+#    Updated: 2024/04/28 14:55:36 by jjaroens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRCS = srcs/main.c
+
+LIBFT = ./libft/libft.a 
 
 INCLUDE = include
 
@@ -29,9 +31,12 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(LIBFT):
+	make -C ./libft
+	
+$(NAME): $(OBJ) $(LIBFT)
 	make -C $(MLX_PATH)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L$(MLX_PATH) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux -L$(MLX_PATH) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -I$(HEADER) -Imlx_linux.h -O3 -c $< -o $@
@@ -42,5 +47,12 @@ clean:
 
 
 fclean: clean
+	$(MAKE) fclean -C libft
 	rm -f $(NAME)
 	make clean -C $(MLX_PATH)
+
+norminette:
+	@norminette -R CheckForbiddenSourceHeader srcs/*.c
+	@norminette -R CheckForbiddenSourceHeader libft/*.c
+	@norminette -R CheckDefine libft/libft.h
+	@norminette -R CheckDefine $(INCLUDE)/*.h

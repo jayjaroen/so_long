@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 17:06:45 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/04/28 14:50:47 by jjaroens         ###   ########.fr       */
+/*   Created: 2023/10/08 12:15:23 by jjaroens          #+#    #+#             */
+/*   Updated: 2024/03/24 11:27:49 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx-linux/mlx.h"
-#include "../libft/libft.h"
-
-int	main(void)
+#include "libft.h"
+// #include <stdio.h>
+// #include <string.h>
+// Does not need to account for segfault
+size_t	ft_strlen(const char *str)
 {
-	void	*mlx = NULL;
-	void	*mlx_win = NULL;
-	void	*img = NULL;
+	size_t	i;
 
-	ft_printf("hi there!\n");
-	mlx = mlx_init();
-	img = mlx_new_image(mlx, 1920, 1080);
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "hi hi hi");
-	mlx_loop(mlx);
-	(void)mlx_win;
-	(void)img;
-	return(0);
-	// image 64* 64 pixel 
+	if (str == NULL)
+		return (0);
+	i = 0;
+	while (*str)
+	{
+		str++;
+		i++;
+	}
+	return (i);
 }
+// int	main(void)
+// {
+// 	printf("the result of strlen function: %zu\n", strlen(""));
+// 	printf("the result of my function: %zu\n", ft_strlen(""));
+// }
