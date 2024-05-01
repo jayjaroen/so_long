@@ -3,20 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:06:45 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/01 15:56:09 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/01 20:57:43 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx-linux/mlx.h"
+// #include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 #include "../include/so_long.h"
+#include "../minilibx_opengl_20191021/mlx.h"
 
 // main function check the agrument if the argument is valid
 // check if the map is valide
 // .ber function
+/* Steps 
+1. Create control function - moving the characters
+2. Setting conditions to end the game --> know how many collectibles
+to collect && moving the players
+3. Data structure && update the player move
+4. Error prevention -> checking the player map
+5. Get next line to read map
+6. Understand mlx function (e.g. the arguments & input)*/
+
 int	main(void)
 {
 	t_data	data;
