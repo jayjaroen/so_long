@@ -6,13 +6,13 @@
 #    By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 17:24:42 by jjaroens          #+#    #+#              #
-#    Updated: 2024/04/28 15:19:12 by jjaroens         ###   ########.fr        #
+#    Updated: 2024/05/01 13:26:53 by jjaroens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRCS = srcs/main.c
+SRCS = srcs/main.c srcs/set_image_files.c
 
 LIBFT = ./libft/libft.a 
 
