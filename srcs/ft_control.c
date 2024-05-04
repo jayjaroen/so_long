@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:07:03 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/04 17:44:42 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/04 18:06:06 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Right Arrow: U+2192 → Decimal: 8594*/
 
 void	ft_move_player(int y, int x, t_data *data)
 {
-	ft_printf("I am not at ft_move_player\n");
+	ft_printf("I am at ft_move_player\n");
 	if (data->map[data->current_y + y][data->current_x + x] == '1')
 		return ;
 	else if (data->map[data->current_y + y][data->current_x + x] == 'E')
@@ -39,6 +39,7 @@ void	ft_move_player(int y, int x, t_data *data)
 		{
 			// collect completed && exit game
 			// write function to exit the game
+			ft_printf("win the game!\n");
 		}
 		else
 		{
@@ -46,11 +47,17 @@ void	ft_move_player(int y, int x, t_data *data)
 			return ; // can't move to the wall
 		}
 	}
-	else if (data->map[data->current_y + y][data->current_x + x] == '0')
+	else if (data->map[data->current_y + y][data->current_x + x] == '0' ||
+		data->map[data->current_y + y][data->current_x + x] == 'P')
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x *100, data->current_y *100);
+	else if (data->map[data->current_y + y][data->current_x + x] == 'C')
+	{
+		data->num_collect--;
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x *100, data->current_y *100);
+	}
 	data->current_x += x;
 	data->current_y += y;
-	data->num_moves += 1;
+	data->num_moves++;
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, data->current_x *100, data->current_y *100);
 	ft_printf("the number of moves are: %d\n", data->num_moves);
 }
@@ -70,10 +77,11 @@ int	ft_check_key_input(int key, t_data *data)
 		// move up (y - 1, x stay the same postion 0)
 		ft_move_player(-1, 0, data);
 	}
-	else if (key == 97 || key == 65 || key == 65361)
+	else if (key == 97 || key == 65 || key == 8595)
 	{
 		// write function moving the player position down
-		// move down (y + 1, x stay the same position 0) 
+		// move down (y + 1, x stay the same position 0)
+		// still have problem with downward error
 		ft_move_player(1, 0, data);
 	}
 	else if (key == 115 || key == 85 || key == 65364)
