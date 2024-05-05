@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_control.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:07:03 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/04 18:06:06 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/05 21:47:54 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx-linux/mlx.h"
+// #include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 #include "../include/so_long.h"
-// #include "../minilibx_opengl_20191021/mlx.h"
+#include "../minilibx_opengl_20191021/mlx.h"
 
 // the number of ESC -> exit key && exit && free, free window
 // 65307	esc
@@ -30,6 +30,8 @@ Right Arrow: U+2192 → Decimal: 8594*/
 
 void	ft_move_player(int y, int x, t_data *data)
 {
+	// if hit the wall, the number of move doesn't go up( printing in the screen)
+	// does it override the the spot && leak?
 	ft_printf("I am at ft_move_player\n");
 	if (data->map[data->current_y + y][data->current_x + x] == '1')
 		return ;
@@ -62,6 +64,7 @@ void	ft_move_player(int y, int x, t_data *data)
 	ft_printf("the number of moves are: %d\n", data->num_moves);
 }
 
+// Linux/////
 int	ft_check_key_input(int key, t_data *data)
 {
 	ft_printf("I am at ft_check_key_input\n");
@@ -102,4 +105,6 @@ void	ft_make_move(t_data *data)
 {
 	ft_printf("I am at ft_make_move\n");
 	mlx_hook(data->mlx_win, 2, (1L << 0), ft_check_key_input, data);
+	// does the second and third variables depending the assignment?
+	// mlx_hook(data->xlx_win, 17, (1L << 17), ft_destroy, data);
 }

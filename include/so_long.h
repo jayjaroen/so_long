@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:03:28 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/04 17:32:56 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/05 18:45:25 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../minilibx-linux/mlx.h"
-// #include "../minilibx_opengl_20191021/mlx.h"
+// # include "../minilibx-linux/mlx.h"
+#include "../minilibx_opengl_20191021/mlx.h"
 
 typedef struct s_data
 {
