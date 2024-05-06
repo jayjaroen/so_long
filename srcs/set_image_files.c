@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   set_image_files.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:25:59 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/05 18:45:56 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:04:02 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../minilibx-linux/mlx.h"
+#include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 #include "../include/so_long.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+// #include "../minilibx_opengl_20191021/mlx.h"
 
 // create a variable later
 void	ft_to_render(t_data *data, int y, int x)

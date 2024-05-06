@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:06:45 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/05 18:46:14 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:03:56 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../minilibx-linux/mlx.h"
+#include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 #include "../include/so_long.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+// #include "../minilibx_opengl_20191021/mlx.h"
 
 // main function check the agrument if the argument is valid
 // check if the map is valide
