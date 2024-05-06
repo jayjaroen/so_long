@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:25:59 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/06 11:04:02 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:49:19 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_to_render(t_data *data, int y, int x)
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->collectible,
 		x * 100, y * 100);
-		data->num_collect += 1;
+		data->num_collect++;
 	}
 	else if (data->map[y][x] == 'E')
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->exit,

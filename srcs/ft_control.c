@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:07:03 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/06 14:28:02 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:52:18 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 // the number of ESC -> exit key && exit && free, free window
 // 65307	esc
 // 119	w || 87 W	|| 65362 up
-// 97	a || 65 A	|| 65361 down
+// 97	a || 65 A	|| 65361 right
 // 115	s || 85 S	|| 65364 left
-// 100	d || 68 D	|| 65363 right
+// 100	d || 68 D	|| 65363 down
 
 // should separate the current window && the static window?
 
@@ -53,6 +53,7 @@ void	ft_move_player(int y, int x, t_data *data)
 	else if (data->map[data->current_y + y][data->current_x + x] == 'C')
 	{
 		data->num_collect--;
+		ft_printf("the current number of collectible: %d\n", data->num_collect);
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x *100, data->current_y *100);
 	}
 	data->current_x += x;
@@ -72,26 +73,26 @@ int	ft_check_key_input(int key, t_data *data)
 		ft_exit_game(data, 1);
 		return (1);
 	}
-	else if (key == KEY_UP_W || key == KEY_UP_w)
+	else if (key == KEY_UP || key == KEY_W || key == KEY_w)
 	{
 		// write function moving the player position up// only player move
 		// move up (y - 1, x stay the same postion 0)
 		ft_move_player(-1, 0, data);
 	}
-	else if (key == KEY_DOWN_A || key == KEY_DOWN_a)
+	else if (key == KEY_DOWN || key == KEY_S || key == KEY_s) 
 	{
 		// write function moving the player position down
 		// move down (y + 1, x stay the same position 0)
 		// still have problem with downward error
 		ft_move_player(1, 0, data);
 	}
-	else if (key == KEY_LEFT_S || key == KEY_LEFT_s)
+	else if (key == KEY_LEFT || key == KEY_A || key == KEY_a)
 	{
 		// write a function moving the player position leftside
 		// move left (y= 0, x -1 )
 		ft_move_player(0, -1, data);
 	}
-	else if (key == KEY_RIGHT_D || key == KEY_RIGHT_d)
+	else if (key == KEY_RIGHT || key == KEY_D || key == KEY_d)
 	{
 		// move right (y = 0, x + 1) 
 		ft_move_player(0, 1, data);

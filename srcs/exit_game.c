@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:30:57 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/06 12:49:59 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:55:43 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,18 @@
 
 void	ft_free_mlx(t_data *data)
 {
-	mlx_destroy_image(data->mlx, data->wall);
-	mlx_destroy_image(data->mlx, data->player);
-	mlx_destroy_image(data->mlx, data->collectible);
-	mlx_destroy_image(data->mlx, data->exit);
-	mlx_destroy_image(data->mlx, data->empty_space);
-	mlx_destroy_window(data->mlx, data->mlx_win);
+	if (data->wall)
+		mlx_destroy_image(data->mlx, data->wall);
+	if (data->player)
+		mlx_destroy_image(data->mlx, data->player);
+	if (data->collectible)
+		mlx_destroy_image(data->mlx, data->collectible);
+	if (data->exit)
+		mlx_destroy_image(data->mlx, data->exit);
+	if (data->empty_space)
+		mlx_destroy_image(data->mlx, data->empty_space);
+	if (data->mlx_win)
+		mlx_destroy_window(data->mlx, data->mlx_win);
 	mlx_destroy_display(data->mlx);
 	if (data->mlx)
 		free(data->mlx);
@@ -31,16 +37,18 @@ void	ft_free_mlx(t_data *data)
 void	ft_free_map(t_data *data)
 {
 	char **map;
+	char **tmp;
 	int	i;
 
 	map = data->map;
+	tmp = map;
 	i = 0;
 	while (map[i])
 	{
 		free(map[i]);
 		i++;
 	}
-	free(map);
+	free(tmp);
 }
 
 int	ft_exit_game(t_data *data, int	type)

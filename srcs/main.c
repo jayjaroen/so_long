@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:06:45 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/06 11:03:56 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:52:14 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ int	main(void)
 	char	*test;
 	int	i;
 	
+	// if (argc != 2)
+	// {
+	// 	ft_printf("Wrong argument\n");
+	// 	return (1);
+	// }
+	// if (ft_check_map_ber(argv[1]))
+	// {
+	// 	ft_printf("back in main but wrong argument\n");
+	// 	exit (1);
+	// }
 	ft_bzero(&data, sizeof(t_data));
 	test = "1111111111111\n10010000000C1\n1000011111001\n1P0011E000001\n1111111111111\n";
 	data.map = ft_split(test, '\n');

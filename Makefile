@@ -6,14 +6,14 @@
 #    By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 17:24:42 by jjaroens          #+#    #+#              #
-#    Updated: 2024/05/06 12:41:13 by jjaroens         ###   ########.fr        #
+#    Updated: 2024/05/06 15:01:17 by jjaroens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 SRCS = srcs/main.c srcs/set_image_files.c srcs/ft_control.c \
-		srcs/exit_game.c
+		srcs/exit_game.c srcs/check_map.c
 
 LIBFT = ./libft/libft.a 
 
@@ -69,7 +69,7 @@ norminette:
 # HEADERS_LIST = include/so_long.h
 
 # SRC = srcs/main.c srcs/set_image_files.c srcs/ft_control.c \
-		srcs/exit_game.c
+		srcs/exit_game.c srcs/check_map.c
 
 # OBJ = $(SRC:%.c=%.o)
 
