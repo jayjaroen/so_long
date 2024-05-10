@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:06:45 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/07 22:11:03 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/10 20:59:57 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,37 +27,38 @@ to collect && moving the players
 5. Get next line to read map
 6. Understand mlx function (e.g. the arguments & input)*/
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data	data;
-	char	*test;
-	int	i;
+	// char	*test;
+	// int	i;
 	
-	// if (argc != 2)
-	// {
-	// 	ft_printf("Wrong argument\n");
-	// 	return (1);
-	// }
-	// if (ft_check_map_ber(argv[1]))
-	// {
-	// 	ft_printf("back in main but wrong argument\n");
-	// 	exit (1);
-	// }
-	ft_bzero(&data, sizeof(t_data));
-	test = "1111111111111\n10010000000C1\n1000011111001\n1P0011E000001\n1111111111111\n";
-	data.map = ft_split(test, '\n');
-	data.mlx = mlx_init();
-	data.mlx_win = mlx_new_window(data.mlx, 1300, 500, "Save Panda!");
-	i = 0;
-	while (data.map[i])
+	if (argc != 2)
 	{
-		ft_printf("%s\n", data.map[i]);
-		i++;
+		ft_printf("Wrong argument\n");
+		return (1);
 	}
-	ft_set_image(&data);
-	ft_render_image(&data);
-	ft_make_move(&data);
-	mlx_loop(data.mlx);
+	if (ft_check_map_ber(argv[1]))
+	{
+		ft_printf("back in main but wrong argument\n");
+		exit (1);
+	}
+	ft_bzero(&data, sizeof(t_data));
+	ft_read_file_ber(argv[1], &data);
+	// test = "1111111111111\n10010000000C1\n1000011111001\n1P0011E000001\n1111111111111\n";
+	// data.map = ft_split(test, '\n');
+	// data.mlx = mlx_init();
+	// data.mlx_win = mlx_new_window(data.mlx, 1300, 500, "Save Panda!");
+	// i = 0;
+	// while (data.map[i])
+	// {
+	// 	ft_printf("%s\n", data.map[i]);
+	// 	i++;
+	// }
+	// ft_set_image(&data);
+	// ft_render_image(&data);
+	// ft_make_move(&data);
+	// mlx_loop(data.mlx);
 	// (void)data.mlx_win;
 	return(0);
 }

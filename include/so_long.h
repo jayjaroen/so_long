@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:03:28 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/09 22:10:23 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/10 20:58:37 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_free_map(t_data *data);
 int		ft_exit_game(t_data *data, int type);
 
 //////////////////////Check map ///////////////////////////////
-int	ft_check_map_ber(char const *map);
+int		ft_check_map_ber(char const *map);
+void	ft_read_file_ber(char *map, t_data *data);
 
 #endif
