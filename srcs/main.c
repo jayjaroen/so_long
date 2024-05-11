@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:06:45 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/10 20:59:57 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/11 16:47:32 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ to collect && moving the players
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	// char	*test;
-	// int	i;
-	
+		
 	if (argc != 2)
 	{
 		ft_printf("Wrong argument\n");
@@ -45,8 +43,7 @@ int	main(int argc, char **argv)
 	}
 	ft_bzero(&data, sizeof(t_data));
 	ft_read_file_ber(argv[1], &data);
-	// test = "1111111111111\n10010000000C1\n1000011111001\n1P0011E000001\n1111111111111\n";
-	// data.map = ft_split(test, '\n');
+	ft_check_map_condition(&data);
 	// data.mlx = mlx_init();
 	// data.mlx_win = mlx_new_window(data.mlx, 1300, 500, "Save Panda!");
 	// i = 0;

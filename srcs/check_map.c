@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:30:19 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/11 15:12:10 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/11 17:48:13 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	check_map_width(t_data *data, char *line)
 	if (!data->map_width) // initialize map width
 		data->map_width = line_length;
 	ft_printf("map_width: %i\n", data->map_width);
-	if (data->map_width != line_length)
+	if (data->map_width != line_length) // this is contain new line
 	{
 		ft_printf("Error: map is not in a square shape\n");
 		// see if I need to free something before
@@ -71,16 +71,16 @@ void	parse_line_to_map(t_data *data, char *line)
 	
 	ft_printf("I am parse_line_to_map\n");
 	check_map_width(data, line);
-	tmp = malloc(sizeof(char *) * data->map_heigth + 1);
+	tmp = malloc(sizeof(char *) * data->map_height + 1);
 	if (!tmp)
 	{
 		// to write free malloc function
 		ft_free_map(data);
 		exit(1);
 	}
-	tmp[data->map_heigth] = (void *)0;
+	tmp[data->map_height] = (void *)0;
 	i = 0;
-	while (i < data->map_heigth - 1)
+	while (i < data->map_height - 1)
 	{
 		// copying old information 
 		// the first info won't be in the loop
@@ -124,13 +124,19 @@ void	ft_read_file_ber(char *map, t_data *data)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		data->map_heigth++;
+		data->map_height++;
 		parse_line_to_map(data, line);
 	}
 	close(fd);
 	if (!data->map)
 	{
 		ft_printf("Error: Map is empty\n");
+		exit(1);
+	}
+	if (data->map_width * data->map_height < 16) /// To check this condition again
+	{
+		ft_printf("Error: Map size is too small\n");
+		ft_free_map(data);
 		exit(1);
 	}
 	// ft_print_map(data);

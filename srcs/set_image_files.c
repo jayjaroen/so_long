@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:25:59 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/11 15:09:23 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/11 17:33:31 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_render_image(t_data *data)
 	
 	ft_printf("this is ft_render_image function\n");
 	y = 0;
-	while (y < data->map_heigth)
+	while (y < data->map_height)
 	{
 		x = 0;
 		while (data->map[y][x])

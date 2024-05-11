@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:03:28 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/10 20:58:37 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/11 17:32:17 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_data
 	void	*mlx;
 	void	*mlx_win;
 	char	**map;
-	// to add size, width
 	
 	// sprites data
 	void	*wall;
@@ -43,7 +42,14 @@ typedef struct s_data
 	void	*collectible;
 	void	*exit;
 	void	*empty_space;
-
+	
+	// number of sprites
+	int		wall_num;
+	int		player_num;
+	int		collectible_num; // delete below later
+	int		empty_num;
+	int		exit_num;
+	
 	// current position
 	int		num_collect;
 	int		current_x;
@@ -51,7 +57,7 @@ typedef struct s_data
 	int		num_moves;
 
 	// file to map
-	int		map_heigth;
+	int		map_height;
 	int		map_width;
 	
 }	t_data;
@@ -72,8 +78,14 @@ void	ft_free_mlx(t_data *data);
 void	ft_free_map(t_data *data);
 int		ft_exit_game(t_data *data, int type);
 
-//////////////////////Check map ///////////////////////////////
+//////////////////////Check map & map condition ///////////////////////////////
 int		ft_check_map_ber(char const *map);
 void	ft_read_file_ber(char *map, t_data *data);
+void	ft_print_map(t_data *data);
+void	parse_line_to_map(t_data *data, char *line);
+int		check_map_width(t_data *data, char *line);
+void	ft_check_map_condition(t_data *data);
+void	ft_check_num_sprites(t_data *data);
+void	ft_check_con_sprites(t_data *data);
 
 #endif
