@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:30:19 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/10 22:54:03 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/11 15:12:10 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../minilibx-linux/mlx.h"
+#include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 #include "../include/so_long.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+// #include "../minilibx_opengl_20191021/mlx.h"
 #include <stdio.h> // perror function
 
 /* steps to check map
@@ -47,11 +47,14 @@ int	ft_check_map_ber(char const *map)
 
 int	check_map_width(t_data *data, char *line)
 {
-	size_t	line_length;
+	int	line_length;
 	
+	ft_printf("I am check_map_width\n");
 	line_length = ft_strlen(line);
+	ft_printf("line length: %i\n", line_length);
 	if (!data->map_width) // initialize map width
 		data->map_width = line_length;
+	ft_printf("map_width: %i\n", data->map_width);
 	if (data->map_width != line_length)
 	{
 		ft_printf("Error: map is not in a square shape\n");
@@ -61,30 +64,55 @@ int	check_map_width(t_data *data, char *line)
 	return (0);
 }
 
-int	parse_line_to_map(t_data *data, char *line)
+void	parse_line_to_map(t_data *data, char *line)
 {
-	char	*tmp;
+	char	**tmp;
+	int		i;
 	
-	if (!line)
-		return (0);
+	ft_printf("I am parse_line_to_map\n");
 	check_map_width(data, line);
-	data->map_heigth++;
-	tmp = malloc(sizeof(char **) * data->map_heigth + 1);
+	tmp = malloc(sizeof(char *) * data->map_heigth + 1);
 	if (!tmp)
 	{
 		// to write free malloc function
-		// ft_free_line_to_map
+		ft_free_map(data);
 		exit(1);
 	}
+	tmp[data->map_heigth] = (void *)0;
+	i = 0;
+	while (i < data->map_heigth - 1)
+	{
+		// copying old information 
+		// the first info won't be in the loop
+		tmp[i] = data->map[i]; // tmp copy the previous info in map
+		i++;
+	}
+	tmp[i] = line; // init the first info for the first time and update the last line after the first looping
+	if (data->map)
+		free(data->map);
+	data->map = tmp;
 	// allocate a memory to a data height and data width
 	// data height -> malloc a pointer to char pointer // malloc char pointer
+}
+
+void	ft_print_map(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("The map is:\n");
+	while (data->map[i])
+	{
+		ft_printf("%s", data->map[i]);
+		i++;
+	}
 }
 
 void	ft_read_file_ber(char *map, t_data *data)
 {
 	int		fd;
 	char	*line;
-
+	
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
 	{
@@ -93,7 +121,18 @@ void	ft_read_file_ber(char *map, t_data *data)
 	}
 	while (1)
 	{
-		line = get_next_line(fd);	
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		data->map_heigth++;
+		parse_line_to_map(data, line);
 	}
+	close(fd);
+	if (!data->map)
+	{
+		ft_printf("Error: Map is empty\n");
+		exit(1);
+	}
+	// ft_print_map(data);
 }
 

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   set_image_files.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:25:59 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/07 22:10:43 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/11 15:09:23 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../minilibx-linux/mlx.h"
+#include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 #include "../include/so_long.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+// #include "../minilibx_opengl_20191021/mlx.h"
 
 // create a variable later
 void	ft_to_render(t_data *data, int y, int x)
@@ -47,15 +47,10 @@ void	ft_render_image(t_data *data)
 {
 	int	x;
 	int	y;
-	// int	width;
-	int	heigth;
-	// current width = 13
-	// current heigth = 5
+	
 	ft_printf("this is ft_render_image function\n");
 	y = 0;
-	// width = 13;
-	heigth = 5;
-	while (y < heigth)
+	while (y < data->map_heigth)
 	{
 		x = 0;
 		while (data->map[y][x])

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:30:57 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/07 22:22:57 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/11 15:08:38 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../minilibx-linux/mlx.h"
+#include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 #include "../include/so_long.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+// #include "../minilibx_opengl_20191021/mlx.h"
 
 void	ft_free_mlx(t_data *data)
 {
@@ -36,16 +36,14 @@ void	ft_free_mlx(t_data *data)
 
 void	ft_free_map(t_data *data)
 {
-	char **map;
 	char **tmp;
 	int	i;
 
-	map = data->map;
-	tmp = map;
+	tmp = data->map;
 	i = 0;
-	while (map[i])
+	while (data->map[i])
 	{
-		free(map[i]);
+		free(data->map[i]);
 		i++;
 	}
 	free(tmp);
