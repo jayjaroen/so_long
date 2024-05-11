@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map_conditions_valid.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:20:02 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/11 17:38:39 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/11 23:31:38 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx-linux/mlx.h"
+// #include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 #include "../include/so_long.h"
-// #include "../minilibx_opengl_20191021/mlx.h"
+#include "../minilibx_opengl_20191021/mlx.h"
 
 /*This file is to check the condition of the sprite in the game:
 1. All sprites need to be included in the map: 1 player, 1 exit,
@@ -21,29 +21,29 @@ at least 1 collectible, at least 1 empty space, at least 16 wall
 2. Check Wall ->Wall must be at the all the border positions e.g. square shapes
 3. flood fill***/
 
+#include <stdio.h>
 void	ft_check_wall_border(t_data *data)
 {
 	ft_printf("I am at check wall border\n");
-	char	**tmp;
 	int		y;
 	int		x;
 	
 	y = 0;
-	tmp = data->map;
 	ft_printf("map height: %i\n", data->map_height);
 	ft_printf("map width: %i\n", data->map_width);
-	while (y < data->map_height - 1)
+	while (y < data->map_height) //looping until index 12
 	{
 		x = 0;
 		while (x < data->map_width - 1)
 		{
-			if ( y == 0 || x == 0 || x == data->map_width - 1 
+			printf("y is: %i x is %i the position is %c\n", y , x ,data->map[y][x]);
+			if ( y == 0 || x == 0 || x == data->map_width - 1
 				|| y == data->map_height - 1)
 			{
-				if (tmp[y][x] != '1')
+				if (data->map[y][x] != '1')
 				{
-					ft_printf("the position is %c\n", tmp[y][x]);
-					ft_printf("the current pos of y is %i, the current pos of x is %i\n", y, x);
+					printf("the current pos of y is %i, the current pos of x is %i\n", y, x);
+					printf("the value is %c\n", data->map[y][x]);
 					ft_printf("Wall need to be at border!\n");
 					ft_free_map(data);
 					exit(1);

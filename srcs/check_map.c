@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:30:19 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/11 17:48:13 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/11 22:44:17 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx-linux/mlx.h"
+// #include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 #include "../include/so_long.h"
-// #include "../minilibx_opengl_20191021/mlx.h"
+#include "../minilibx_opengl_20191021/mlx.h"
 #include <stdio.h> // perror function
 
 /* steps to check map
@@ -21,7 +21,8 @@
 2. ft_read_map if map fail need to free the map
 3. Check height && width of the map
 4. check if it contains all required elements "0, 1, C, E, P" (only one E & P)
-5. check if it is accessible --> flood fill */
+5. check if it is accessible --> flood fill 
+// set the mininum height and width??*/
 
 int	ft_check_map_ber(char const *map)
 {
@@ -55,12 +56,13 @@ int	check_map_width(t_data *data, char *line)
 	if (!data->map_width) // initialize map width
 		data->map_width = line_length;
 	ft_printf("map_width: %i\n", data->map_width);
-	if (data->map_width != line_length) // this is contain new line
-	{
-		ft_printf("Error: map is not in a square shape\n");
-		// see if I need to free something before
-		exit(1);
-	}
+	// this include a new line (as well?)
+	// if (data->map_width != line_length) // this is contain new line
+	// {
+	// 	ft_printf("Error: map is not in a square shape\n");
+	// 	// see if I need to free something before
+	// 	exit(1);
+	// }
 	return (0);
 }
 
