@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:07:03 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 17:25:51 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:55:30 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	ft_move_player(int y, int x, t_data *data)
 		}
 		else
 		{
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, data->current_x * 100, data->current_y * 100);
+			// mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, data->current_x * 100, data->current_y * 100);
+			ft_printf("the number of collectible: %i\n", data->num_collect);
 			return ; // can't move to the wall
 		}
 	}
@@ -52,6 +53,7 @@ void	ft_move_player(int y, int x, t_data *data)
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x *100, data->current_y *100);
 	else if (data->map[data->current_y + y][data->current_x + x] == 'C')
 	{
+		data->map[data->current_y + y][data->current_x + x] = '0';
 		data->num_collect--;
 		ft_printf("the current number of collectible: %d\n", data->num_collect);
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x *100, data->current_y *100);
@@ -66,7 +68,7 @@ void	ft_move_player(int y, int x, t_data *data)
 ///////////////////////////////////////Linux////////////////////////////////////////////////////////////////
 int	ft_check_key_input(int key, t_data *data)
 {
-	ft_printf("I am at ft_check_key_input\n");
+	ft_printf("I am at ft_check_key_input: %i\n", key);
 	if (key == 65307)
 	{
 		// function exit game;
