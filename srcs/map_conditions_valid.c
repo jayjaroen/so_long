@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map_conditions_valid.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:20:02 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/11 23:31:38 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:25:29 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "../minilibx-linux/mlx.h"
-#include "../libft/libft.h"
+// #include "../libft/libft.h"
 #include "../include/so_long.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+// #include "../minilibx_opengl_20191021/mlx.h"
 
 /*This file is to check the condition of the sprite in the game:
 1. All sprites need to be included in the map: 1 player, 1 exit,
@@ -61,7 +61,7 @@ void	ft_check_con_sprites(t_data *data)
 	ft_printf("I am at ft_check_con_sprites\n");
 	if (data->wall_num < 16)
 	{
-		ft_printf("Wall is not met the condition\n");// can use perror?
+		ft_printf("Wall is not met the condition\n");// can use perror? // actually this is depend on the size of the height & width ?? // not good if doing the hard code here!
 		ft_free_map(data);
 		exit(1);
 	}
@@ -100,7 +100,12 @@ void	ft_check_num_sprites(t_data *data)
 			else if (tmp[i][j] == 'C')
 				data->collectible_num++;
 			else if (tmp[i][j] == 'P')
+			{
 				data->player_num++;
+				
+				data->pos_y = i;
+				data->pos_x = j;
+			}
 			else if (tmp[i][j] == 'E')
 				data->exit_num++;
 			j++;
@@ -119,5 +124,14 @@ void	ft_check_map_condition(t_data *data)
 	ft_printf("The number of collectible:%i\n", data->collectible_num);
 	ft_printf("The number of empty space: %i\n", data->empty_num);
 	ft_check_con_sprites(data);
-	ft_check_wall_border(data);	
+	ft_check_wall_border(data);
+	ft_copy_map(data);
+	if (!ft_check_flood_fill_map(data, data->pos_y, data->pos_x))
+	{
+		ft_printf("the flood fill function is not successful\n");
+		ft_free_map_copy(data->map_copy);
+		ft_free_map(data);
+		exit (1);
+	}
+	ft_free_map_copy(data->map_copy);
 }

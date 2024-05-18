@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:06:45 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/11 22:28:06 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:25:56 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "../minilibx-linux/mlx.h"
-#include "../libft/libft.h"
+// #include "../libft/libft.h"
 #include "../include/so_long.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+// #include "../minilibx_opengl_20191021/mlx.h"
 
 // main function check the agrument if the argument is valid
 // check if the map is valide
@@ -44,18 +44,18 @@ int	main(int argc, char **argv)
 	ft_bzero(&data, sizeof(t_data));
 	ft_read_file_ber(argv[1], &data);
 	ft_check_map_condition(&data);
-	// data.mlx = mlx_init();
-	// data.mlx_win = mlx_new_window(data.mlx, 1300, 500, "Save Panda!");
+	data.mlx = mlx_init();
+	data.mlx_win = mlx_new_window(data.mlx, 1300, 500, "Save Panda!");
 	// i = 0;
 	// while (data.map[i])
 	// {
 	// 	ft_printf("%s\n", data.map[i]);
 	// 	i++;
 	// }
-	// ft_set_image(&data);
-	// ft_render_image(&data);
-	// ft_make_move(&data);
-	// mlx_loop(data.mlx);
-	// (void)data.mlx_win;
+	ft_set_image(&data);
+	ft_render_image(&data);
+	ft_make_move(&data);
+	mlx_loop(data.mlx);
+	(void)data.mlx_win;
 	return(0);
 }

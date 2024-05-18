@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:30:19 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/11 22:44:17 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:25:13 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "../minilibx-linux/mlx.h"
-#include "../libft/libft.h"
+// #include "../libft/libft.h"
 #include "../include/so_long.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+//  
 #include <stdio.h> // perror function
 
 /* steps to check map
@@ -34,7 +34,7 @@ int	ft_check_map_ber(char const *map)
 	j = 3;
 	i = ft_strlen(map) - 1;
 	file = ".ber";
-	ft_printf("I am ft_check_map\n");
+	// ft_printf("I am ft_check_map\n");
 	if (!map)
 		return (1);
 	while (j && file[j] == map[i])
@@ -50,12 +50,12 @@ int	check_map_width(t_data *data, char *line)
 {
 	int	line_length;
 	
-	ft_printf("I am check_map_width\n");
+	// ft_printf("I am check_map_width\n");
 	line_length = ft_strlen(line);
-	ft_printf("line length: %i\n", line_length);
+	// ft_printf("line length: %i\n", line_length);
 	if (!data->map_width) // initialize map width
 		data->map_width = line_length;
-	ft_printf("map_width: %i\n", data->map_width);
+	// ft_printf("map_width: %i\n", data->map_width);
 	// this include a new line (as well?)
 	// if (data->map_width != line_length) // this is contain new line
 	// {
@@ -71,7 +71,7 @@ void	parse_line_to_map(t_data *data, char *line)
 	char	**tmp;
 	int		i;
 	
-	ft_printf("I am parse_line_to_map\n");
+	// ft_printf("I am parse_line_to_map\n");
 	check_map_width(data, line);
 	tmp = malloc(sizeof(char *) * data->map_height + 1);
 	if (!tmp)
@@ -135,7 +135,7 @@ void	ft_read_file_ber(char *map, t_data *data)
 		ft_printf("Error: Map is empty\n");
 		exit(1);
 	}
-	if (data->map_width * data->map_height < 16) /// To check this condition again
+	if (data->map_width * data->map_height < 16) /// To check this condition again // the smallest map that is acceptible
 	{
 		ft_printf("Error: Map size is too small\n");
 		ft_free_map(data);

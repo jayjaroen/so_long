@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:03:28 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/11 17:32:17 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:15:51 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@
 # define KEY_a 97
 # define IMG_SIZE 100 // to change in the code later
 
-// # include "../minilibx-linux/mlx.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+#include "../minilibx-linux/mlx.h"
+#include "../libft/libft.h"
+// #include "../minilibx_opengl_20191021/mlx.h"
 #include <fcntl.h>
 
 typedef struct s_data
@@ -35,6 +36,7 @@ typedef struct s_data
 	void	*mlx;
 	void	*mlx_win;
 	char	**map;
+	char	**map_copy;
 	
 	// sprites data
 	void	*wall;
@@ -55,7 +57,9 @@ typedef struct s_data
 	int		current_x;
 	int		current_y;
 	int		num_moves;
-
+	int		pos_x;
+	int		pos_y;
+	
 	// file to map
 	int		map_height;
 	int		map_width;
@@ -87,5 +91,8 @@ int		check_map_width(t_data *data, char *line);
 void	ft_check_map_condition(t_data *data);
 void	ft_check_num_sprites(t_data *data);
 void	ft_check_con_sprites(t_data *data);
+int		ft_check_flood_fill_map(t_data *data, int y, int x);
+void	ft_copy_map(t_data *data);
+void	ft_free_map_copy(char **map);
 
 #endif

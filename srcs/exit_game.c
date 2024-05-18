@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:30:57 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/11 22:27:09 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:25:22 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "../minilibx-linux/mlx.h"
-#include "../libft/libft.h"
+// #include "../libft/libft.h"
 #include "../include/so_long.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+// #include "../minilibx_opengl_20191021/mlx.h"
 
 void	ft_free_mlx(t_data *data)
 {
+	if (data->mlx_win)
+		mlx_destroy_window(data->mlx, data->mlx_win);
 	if (data->wall)
 		mlx_destroy_image(data->mlx, data->wall);
 	if (data->player)
@@ -27,9 +29,7 @@ void	ft_free_mlx(t_data *data)
 		mlx_destroy_image(data->mlx, data->exit);
 	if (data->empty_space)
 		mlx_destroy_image(data->mlx, data->empty_space);
-	if (data->mlx_win)
-		mlx_destroy_window(data->mlx, data->mlx_win);
-	// mlx_destroy_display(data->mlx); // no this function on mac
+	mlx_destroy_display(data->mlx); // no this function on mac
 	if (data->mlx)
 		free(data->mlx);
 }
@@ -51,6 +51,8 @@ void	ft_free_map(t_data *data)
 
 int	ft_exit_game(t_data *data, int	type)
 {
+	ft_printf("exit game\n");
+	ft_printf("%i\n", type);
 	ft_free_mlx(data);
 	ft_free_map(data);
 	return (type);
