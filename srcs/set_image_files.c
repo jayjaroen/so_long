@@ -3,41 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   set_image_files.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:25:59 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 17:26:05 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 22:06:34 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../minilibx-linux/mlx.h"
-// #include "../libft/libft.h"
 #include "../include/so_long.h"
-// #include "../minilibx_opengl_20191021/mlx.h"
 
-// create a variable later
 void	ft_to_render(t_data *data, int y, int x)
 {
 	// setting the current image position?
 	if (data->map[y][x] == '0')
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, 
-		x * 100, y * 100);
+		x * IMG_SIZE, y * IMG_SIZE);
 	else if (data->map[y][x] == '1')
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->wall,
-		x * 100, y * 100);
+		x * IMG_SIZE, y * IMG_SIZE);
 	else if (data->map[y][x] == 'C')
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->collectible,
-		x * 100, y * 100);
+		x * IMG_SIZE, y * IMG_SIZE);
 		data->num_collect++;
 	}
 	else if (data->map[y][x] == 'E')
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->exit,
-		x * 100, y * 100);
+		x * IMG_SIZE, y * IMG_SIZE);
 	else if (data->map[y][x] == 'P')
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,
-		x * 100, y * 100);
+		x * IMG_SIZE, y * IMG_SIZE);
 		data->current_x = x;
 		data->current_y = y;
 	}
@@ -67,7 +63,7 @@ void	ft_set_image(t_data *data)
 {
 	int	num ;
 	
-	num = 100;
+	num = IMG_SIZE;
 	if (!data)
 		return ;
 	ft_printf("this is ft_set_image function\n");

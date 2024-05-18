@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 13:03:08 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 17:18:15 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 22:30:23 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,32 @@ void	ft_copy_map(t_data *data)
 		i++;
 	}
 	data->map_copy = copy;
+}
+
+void	ft_check_character(t_data *data)
+{
+	int	y;
+	int x;
+
+	y = 0;
+	ft_printf("I am at ft_check_character\n");
+	while (y < data->map_height)
+	{
+		x = 0;
+		while (x < data->map_width)
+		{
+			if (data->map[y][x] != '0' && data->map[y][x] != '1' 
+			&& data->map[y][x] != 'P' && data->map[y][x] != 'E'
+			&& data->map[y][x] != 'C' && data->map[y][x] != '\n')
+			{
+				perror("Map Input Error! Check Character!\n");
+				ft_free_map(data);
+				exit(1);
+			}
+			x++;			
+		}
+		y++;
+	}
 }
 
 int	ft_check_flood_fill_map(t_data *data, int y, int x)

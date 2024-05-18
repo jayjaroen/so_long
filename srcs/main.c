@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:06:45 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 17:25:56 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 22:00:43 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,6 @@ int	main(int argc, char **argv)
 	ft_check_map_condition(&data);
 	data.mlx = mlx_init();
 	data.mlx_win = mlx_new_window(data.mlx, 1300, 500, "Save Panda!");
-	// i = 0;
-	// while (data.map[i])
-	// {
-	// 	ft_printf("%s\n", data.map[i]);
-	// 	i++;
-	// }
 	ft_set_image(&data);
 	ft_render_image(&data);
 	ft_make_move(&data);

@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:30:19 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 17:25:13 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 22:02:16 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../minilibx-linux/mlx.h"
-// #include "../libft/libft.h"
 #include "../include/so_long.h"
-//  
-#include <stdio.h> // perror function
 
 /* steps to check map
 1. check if the map is .ber

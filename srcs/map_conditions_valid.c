@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_conditions_valid.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:20:02 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 17:25:29 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 22:32:55 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ void	ft_check_num_sprites(t_data *data)
 void	ft_check_map_condition(t_data *data)
 {
 	ft_printf("I am at ft_check_map_condition\n");
+	ft_check_character(data);
 	ft_check_num_sprites(data);
 	ft_printf("The number of Wall:%i\n", data->wall_num);
 	ft_printf("The number of player: %i\n", data->player_num);

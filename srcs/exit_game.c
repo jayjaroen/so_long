@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:30:57 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 17:25:22 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 21:47:46 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_free_mlx(t_data *data)
 		mlx_destroy_image(data->mlx, data->exit);
 	if (data->empty_space)
 		mlx_destroy_image(data->mlx, data->empty_space);
-	mlx_destroy_display(data->mlx); // no this function on mac
+	// mlx_destroy_display(data->mlx); // no this function on mac
 	if (data->mlx)
 		free(data->mlx);
 }

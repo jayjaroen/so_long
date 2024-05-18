@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_control.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:07:03 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 17:55:30 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 22:03:41 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_move_player(int y, int x, t_data *data)
 			// collect completed && exit game
 			// write function to exit the game
 			ft_printf("win the game!\n");
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x *100, data->current_y *100);
-			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, (data->current_x + x) *100, (data->current_y + y) *100);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x * IMG_SIZE, data->current_y * IMG_SIZE);
+			mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, (data->current_x + x) * IMG_SIZE, (data->current_y + y) * IMG_SIZE);
 			ft_exit_game(data, 1);
 		}
 		else
@@ -50,102 +50,51 @@ void	ft_move_player(int y, int x, t_data *data)
 	}
 	else if (data->map[data->current_y + y][data->current_x + x] == '0' ||
 		data->map[data->current_y + y][data->current_x + x] == 'P')
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x *100, data->current_y *100);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x * IMG_SIZE, data->current_y * IMG_SIZE);
 	else if (data->map[data->current_y + y][data->current_x + x] == 'C')
 	{
 		data->map[data->current_y + y][data->current_x + x] = '0';
 		data->num_collect--;
 		ft_printf("the current number of collectible: %d\n", data->num_collect);
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x *100, data->current_y *100);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->empty_space, data->current_x * IMG_SIZE, data->current_y * IMG_SIZE);
 	}
 	data->current_x += x;
 	data->current_y += y;
 	data->num_moves++;
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, data->current_x *100, data->current_y *100);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, data->current_x * IMG_SIZE, data->current_y * IMG_SIZE);
 	ft_printf("the number of moves are: %d\n", data->num_moves);
 }
 
 ///////////////////////////////////////Linux////////////////////////////////////////////////////////////////
-int	ft_check_key_input(int key, t_data *data)
-{
-	ft_printf("I am at ft_check_key_input: %i\n", key);
-	if (key == 65307)
-	{
-		// function exit game;
-		ft_exit_game(data, 1);
-		return (1);
-	}
-	else if (key == KEY_UP || key == KEY_W || key == KEY_w)
-	{
-		// write function moving the player position up// only player move
-		// move up (y - 1, x stay the same postion 0)
-		ft_move_player(-1, 0, data);
-	}
-	else if (key == KEY_DOWN || key == KEY_S || key == KEY_s) 
-	{
-		// write function moving the player position down
-		// move down (y + 1, x stay the same position 0)
-		// still have problem with downward error
-		ft_move_player(1, 0, data);
-	}
-	else if (key == KEY_LEFT || key == KEY_A || key == KEY_a)
-	{
-		// write a function moving the player position leftside
-		// move left (y= 0, x -1 )
-		ft_move_player(0, -1, data);
-	}
-	else if (key == KEY_RIGHT || key == KEY_D || key == KEY_d)
-	{
-		// move right (y = 0, x + 1) 
-		ft_move_player(0, 1, data);
-	}
-	return (0);
-}
-
-// LINUX
-void	ft_make_move(t_data *data)
-{
-	ft_printf("I am at ft_make_move\n");
-	mlx_hook(data->mlx_win, 2, (1L << 0), ft_check_key_input, data);
-	// // does the second and third variables depending the assignment?
-	mlx_hook(data->mlx_win, 17, (1L << 17), ft_exit_game, data);
-	(void)data;
-}
-
-// MAC///
-// #include <stdio.h>
 // int	ft_check_key_input(int key, t_data *data)
 // {
-// 	// ft_printf("%d\n", key);
-// 	// (void *)data;
-	
-// 	// return (key);
-// 	if (key == 53) // ESC
+// 	ft_printf("I am at ft_check_key_input: %i\n", key);
+// 	if (key == 65307)
 // 	{
 // 		// function exit game;
 // 		ft_exit_game(data, 1);
 // 		return (1);
 // 	}
-// 	else if (key == 126 ) // up
+// 	else if (key == KEY_UP || key == KEY_W || key == KEY_w)
 // 	{
 // 		// write function moving the player position up// only player move
 // 		// move up (y - 1, x stay the same postion 0)
 // 		ft_move_player(-1, 0, data);
 // 	}
-// 	else if (key == 125 ) 
+// 	else if (key == KEY_DOWN || key == KEY_S || key == KEY_s) 
 // 	{
 // 		// write function moving the player position down
 // 		// move down (y + 1, x stay the same position 0)
 // 		// still have problem with downward error
 // 		ft_move_player(1, 0, data);
 // 	}
-// 	else if (key == 123)
+// 	else if (key == KEY_LEFT || key == KEY_A || key == KEY_a)
 // 	{
 // 		// write a function moving the player position leftside
 // 		// move left (y= 0, x -1 )
 // 		ft_move_player(0, -1, data);
 // 	}
-// 	else if (key == 124)
+// 	else if (key == KEY_RIGHT || key == KEY_D || key == KEY_d)
 // 	{
 // 		// move right (y = 0, x + 1) 
 // 		ft_move_player(0, 1, data);
@@ -153,10 +102,61 @@ void	ft_make_move(t_data *data)
 // 	return (0);
 // }
 
+// // LINUX
 // void	ft_make_move(t_data *data)
 // {
 // 	ft_printf("I am at ft_make_move\n");
-// 	ft_printf("%d\n", mlx_hook(data->mlx_win, 2, 0, ft_check_key_input, data));
-// 	// does the second and third variables depending the assignment?
-// 	mlx_hook(data->mlx_win, 17, 0, ft_exit_game, data);
+// 	mlx_hook(data->mlx_win, 2, (1L << 0), ft_check_key_input, data);
+// 	// // does the second and third variables depending the assignment?
+// 	mlx_hook(data->mlx_win, 17, (1L << 17), ft_exit_game, data);
+// 	(void)data;
 // }
+
+///////////////////MAC///
+#include <stdio.h>
+int	ft_check_key_input(int key, t_data *data)
+{
+	// ft_printf("%d\n", key);
+	// (void *)data;
+	
+	// return (key);
+	if (key == 53) // ESC
+	{
+		// function exit game;
+		ft_exit_game(data, 1);
+		return (1);
+	}
+	else if (key == 126 ) // up
+	{
+		// write function moving the player position up// only player move
+		// move up (y - 1, x stay the same postion 0)
+		ft_move_player(-1, 0, data);
+	}
+	else if (key == 125 ) 
+	{
+		// write function moving the player position down
+		// move down (y + 1, x stay the same position 0)
+		// still have problem with downward error
+		ft_move_player(1, 0, data);
+	}
+	else if (key == 123)
+	{
+		// write a function moving the player position leftside
+		// move left (y= 0, x -1 )
+		ft_move_player(0, -1, data);
+	}
+	else if (key == 124)
+	{
+		// move right (y = 0, x + 1) 
+		ft_move_player(0, 1, data);
+	}
+	return (0);
+}
+
+void	ft_make_move(t_data *data)
+{
+	ft_printf("I am at ft_make_move\n");
+	ft_printf("%d\n", mlx_hook(data->mlx_win, 2, 0, ft_check_key_input, data));
+	// does the second and third variables depending the assignment?
+	mlx_hook(data->mlx_win, 17, 0, ft_exit_game, data);
+}

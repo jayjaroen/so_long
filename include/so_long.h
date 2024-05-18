@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:03:28 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 17:15:51 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/18 22:26:02 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@
 # define KEY_a 97
 # define IMG_SIZE 100 // to change in the code later
 
-#include "../minilibx-linux/mlx.h"
+// #include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
-// #include "../minilibx_opengl_20191021/mlx.h"
+#include "../minilibx_opengl_20191021/mlx.h"
 #include <fcntl.h>
+#include <stdio.h> // perror function ok to use?
 
 typedef struct s_data
 {
@@ -94,5 +95,6 @@ void	ft_check_con_sprites(t_data *data);
 int		ft_check_flood_fill_map(t_data *data, int y, int x);
 void	ft_copy_map(t_data *data);
 void	ft_free_map_copy(char **map);
+void	ft_check_character(t_data *data);
 
 #endif
