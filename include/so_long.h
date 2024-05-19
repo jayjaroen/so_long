@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:03:28 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/19 12:03:19 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:46:13 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_data
 	void	*empty_space;
 	
 	// number of sprites
-	int		wall_num;
 	int		player_num;
 	int		collectible_num; // delete below later
 	int		empty_num;
@@ -76,11 +75,14 @@ void	ft_to_render(t_data *data, int y, int x);
 void	ft_move_player(int x, int y, t_data *data);
 int		ft_check_key_input(int key, t_data *data);
 void	ft_make_move(t_data *data);
+void	ft_move_player_cont(t_data *data);
+
 
 ///////////////////////Exit Game////////////////////////////////
 void	ft_free_mlx(t_data *data);
 void	ft_free_map(t_data *data);
 int		ft_exit_game(t_data *data);
+void	ft_check_finish_game(int y, int x, t_data *data);
 
 //////////////////////Check map & map condition ///////////////////////////////
 int		ft_check_map_ber(char const *map);

@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:30:19 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/19 12:23:23 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:07:30 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 int	ft_check_map_ber(char const *map)
 {
-	size_t i;
-	size_t j;
-	char *file;
+	size_t	i;
+	size_t	j;
+	char	*file;
 
 	j = 3;
 	i = ft_strlen(map) - 1;
@@ -41,15 +41,15 @@ int	ft_check_map_ber(char const *map)
 int	check_map_width(t_data *data, char *line)
 {
 	int	line_length;
-	
+
 	line_length = ft_strlen(line);
 	if (!data->map_width)
 		data->map_width = line_length;
 	if (data->map_width != line_length)
 	{
-		ft_printf("Map is not rectangle shape!");
+		ft_putstr_fd("Map is not rectangle shape!", 2);
 		ft_free_map(data);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	return (0);
 }
@@ -58,13 +58,13 @@ void	parse_line_to_map(t_data *data, char *line)
 {
 	char	**tmp;
 	int		i;
-	
+
 	check_map_width(data, line);
 	tmp = malloc(sizeof(char *) * (data->map_height + 1));
 	if (!tmp)
 	{
 		ft_free_map(data);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	tmp[data->map_height] = (void *)0;
 	i = 0;
@@ -98,7 +98,7 @@ void	ft_read_file_ber(char *map, t_data *data)
 {
 	int		fd;
 	char	*line;
-	
+
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
 	{
@@ -118,15 +118,7 @@ void	ft_read_file_ber(char *map, t_data *data)
 	close(fd);
 	if (!data->map)
 	{
-		ft_printf("Error: Map is empty\n");
-		exit(1);
+		ft_putstr_fd("Error: Map is empty\n", 2);
+		exit (EXIT_FAILURE);
 	}
-	if (data->map_width * data->map_height < 16) /// To check this condition again // the smallest map that is acceptible
-	{
-		ft_printf("Error: Map size is too small\n");
-		ft_free_map(data);
-		exit(1);
-	}
-	// ft_print_map(data);
 }
-

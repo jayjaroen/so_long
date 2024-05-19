@@ -6,7 +6,7 @@
 #    By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/27 17:24:42 by jjaroens          #+#    #+#              #
-#    Updated: 2024/05/19 10:37:34 by jjaroens         ###   ########.fr        #
+#    Updated: 2024/05/19 16:52:14 by jjaroens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,7 @@ $(LIBFT):
 	
 $(NAME): $(OBJ) $(LIBFT) $(HEADER_SO)
 	make -C $(MLX_PATH)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux -L$(MLX_PATH) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) 
-# linux version of MLX
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux -L$(MLX_PATH) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	
 %.o: %.c $(HEADER_SO)
 	$(CC) $(CFLAGS) -I$(HEADER) -Imlx_linux.h -O3 -c $< -o $@

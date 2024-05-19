@@ -6,14 +6,11 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:30:57 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/19 12:00:17 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/19 16:59:31 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../minilibx-linux/mlx.h"
-// #include "../libft/libft.h"
 #include "../include/so_long.h"
-// #include "../minilibx_opengl_20191021/mlx.h"
 
 void	ft_free_mlx(t_data *data)
 {
@@ -29,9 +26,6 @@ void	ft_free_mlx(t_data *data)
 		mlx_destroy_image(data->mlx, data->empty_space);
 	if (data->mlx_win)
 		mlx_destroy_window(data->mlx, data->mlx_win);
-	// mlx_destroy_display(data->mlx); // no this function on mac
-	// if (data->mlx)
-	// 	free(data->mlx);
 }
 
 void	ft_free_map(t_data *data)
@@ -49,9 +43,11 @@ void	ft_free_map(t_data *data)
 
 int	ft_exit_game(t_data *data)
 {
-	ft_printf("exit game\n");
-	// ft_printf("%i\n", type);
 	ft_free_mlx(data);
 	ft_free_map(data);
 	exit(0);
 }
+
+// mlx_destroy_display(data->mlx); // no this function on mac
+// if (data->mlx)
+// 	free(data->mlx);
