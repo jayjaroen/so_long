@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_conditions_valid.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:20:02 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 22:32:55 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/19 11:12:14 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../minilibx-linux/mlx.h"
-// #include "../libft/libft.h"
 #include "../include/so_long.h"
-// #include "../minilibx_opengl_20191021/mlx.h"
 
 /*This file is to check the condition of the sprite in the game:
 1. All sprites need to be included in the map: 1 player, 1 exit,
@@ -21,7 +18,6 @@ at least 1 collectible, at least 1 empty space, at least 16 wall
 2. Check Wall ->Wall must be at the all the border positions e.g. square shapes
 3. flood fill***/
 
-#include <stdio.h>
 void	ft_check_wall_border(t_data *data)
 {
 	ft_printf("I am at check wall border\n");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:03:28 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 22:26:02 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/19 12:03:19 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # define KEY_a 97
 # define IMG_SIZE 100 // to change in the code later
 
-// #include "../minilibx-linux/mlx.h"
+#include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
-#include "../minilibx_opengl_20191021/mlx.h"
+// #include "../minilibx_opengl_20191021/mlx.h"
 #include <fcntl.h>
 #include <stdio.h> // perror function ok to use?
 
@@ -63,8 +63,7 @@ typedef struct s_data
 	
 	// file to map
 	int		map_height;
-	int		map_width;
-	
+	int		map_width;	
 }	t_data;
 
 ////////////////////////// Image Handling //////////////////////
@@ -81,7 +80,7 @@ void	ft_make_move(t_data *data);
 ///////////////////////Exit Game////////////////////////////////
 void	ft_free_mlx(t_data *data);
 void	ft_free_map(t_data *data);
-int		ft_exit_game(t_data *data, int type);
+int		ft_exit_game(t_data *data);
 
 //////////////////////Check map & map condition ///////////////////////////////
 int		ft_check_map_ber(char const *map);

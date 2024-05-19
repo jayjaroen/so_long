@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:30:19 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 22:02:16 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/19 12:23:23 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,9 @@ int	ft_check_map_ber(char const *map)
 	size_t j;
 	char *file;
 
-	i = 0;
 	j = 3;
 	i = ft_strlen(map) - 1;
 	file = ".ber";
-	// ft_printf("I am ft_check_map\n");
-	if (!map)
-		return (1);
 	while (j && file[j] == map[i])
 	{
 		j--;
@@ -46,19 +42,15 @@ int	check_map_width(t_data *data, char *line)
 {
 	int	line_length;
 	
-	// ft_printf("I am check_map_width\n");
 	line_length = ft_strlen(line);
-	// ft_printf("line length: %i\n", line_length);
-	if (!data->map_width) // initialize map width
+	if (!data->map_width)
 		data->map_width = line_length;
-	// ft_printf("map_width: %i\n", data->map_width);
-	// this include a new line (as well?)
-	// if (data->map_width != line_length) // this is contain new line
-	// {
-	// 	ft_printf("Error: map is not in a square shape\n");
-	// 	// see if I need to free something before
-	// 	exit(1);
-	// }
+	if (data->map_width != line_length)
+	{
+		ft_printf("Map is not rectangle shape!");
+		ft_free_map(data);
+		exit(1);
+	}
 	return (0);
 }
 
@@ -67,12 +59,10 @@ void	parse_line_to_map(t_data *data, char *line)
 	char	**tmp;
 	int		i;
 	
-	// ft_printf("I am parse_line_to_map\n");
 	check_map_width(data, line);
-	tmp = malloc(sizeof(char *) * data->map_height + 1);
+	tmp = malloc(sizeof(char *) * (data->map_height + 1));
 	if (!tmp)
 	{
-		// to write free malloc function
 		ft_free_map(data);
 		exit(1);
 	}
@@ -80,17 +70,13 @@ void	parse_line_to_map(t_data *data, char *line)
 	i = 0;
 	while (i < data->map_height - 1)
 	{
-		// copying old information 
-		// the first info won't be in the loop
-		tmp[i] = data->map[i]; // tmp copy the previous info in map
+		tmp[i] = data->map[i];
 		i++;
 	}
-	tmp[i] = line; // init the first info for the first time and update the last line after the first looping
+	tmp[i] = line;
 	if (data->map)
 		free(data->map);
 	data->map = tmp;
-	// allocate a memory to a data height and data width
-	// data height -> malloc a pointer to char pointer // malloc char pointer
 }
 
 void	ft_print_map(t_data *data)
@@ -101,9 +87,11 @@ void	ft_print_map(t_data *data)
 	ft_printf("The map is:\n");
 	while (data->map[i])
 	{
-		ft_printf("%s", data->map[i]);
+		ft_printf("%s\n", data->map[i]);
 		i++;
 	}
+	ft_printf("height is: %i\n", data->map_height);
+	ft_printf("width is: %i\n", data->map_width);
 }
 
 void	ft_read_file_ber(char *map, t_data *data)
@@ -122,6 +110,8 @@ void	ft_read_file_ber(char *map, t_data *data)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
+		if (line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = '\0';
 		data->map_height++;
 		parse_line_to_map(data, line);
 	}

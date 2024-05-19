@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_image_files.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:25:59 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/18 22:06:34 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/19 11:26:10 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,11 @@ void	ft_set_image(t_data *data)
 	int	num ;
 	
 	num = IMG_SIZE;
-	if (!data)
-		return ;
+	if (!data->mlx)
+	{
+		ft_free_map(data);
+		exit (1);
+	}	
 	ft_printf("this is ft_set_image function\n");
 	data->wall = mlx_xpm_file_to_image(data->mlx, "./textures/wall_cactus.xpm", &num, &num);
 	data->collectible = mlx_xpm_file_to_image(data->mlx, "./textures/collectible_melon.xpm", &num, &num);
@@ -75,7 +78,8 @@ void	ft_set_image(t_data *data)
 	if (!data->wall || !data->collectible || !data->empty_space
 		|| !data->player || !data->exit)
 	{
-		ft_printf("Image source not found\n");
+		ft_printf("Image sources not found\n");
+		ft_free_map(data); // check this case
 		exit(1);
 	}	
 }
