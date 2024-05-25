@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:03:28 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/19 16:46:13 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/05/25 13:07:19 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # define KEY_a 97
 # define IMG_SIZE 100 // to change in the code later
 
-#include "../minilibx-linux/mlx.h"
+// #include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
-// #include "../minilibx_opengl_20191021/mlx.h"
+#include "../minilibx_opengl_20191021/mlx.h"
 #include <fcntl.h>
 #include <stdio.h> // perror function ok to use?
 
