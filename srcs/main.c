@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:06:45 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/19 16:04:47 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/06/01 11:43:44 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr_fd("Wrong argument\n", 2);
+		ft_putstr_fd("Error: Wrong argument\n", 2);
 		exit (EXIT_FAILURE);
 	}
 	if (ft_check_map_ber(argv[1]))
 	{
-		ft_putstr_fd("Wrong argument: Check file\n", 2);
+		ft_putstr_fd("Error: Check file\n", 2);
 		exit (EXIT_FAILURE);
 	}
 	ft_bzero(&data, sizeof(t_data));

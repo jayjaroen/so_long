@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:07:03 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/19 16:49:13 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/06/01 11:47:54 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,15 @@ void	ft_move_player(int y, int x, t_data *data)
 
 int	ft_check_key_input(int key, t_data *data)
 {
-	if (key == KEY_UP || key == KEY_W || key == KEY_w)
+	if (key == ESC)
+		ft_exit_game(data);
+	else if (key == KEY_UP || key == KEY_W)
 		ft_move_player(-1, 0, data);
-	else if (key == KEY_DOWN || key == KEY_S || key == KEY_s)
+	else if (key == KEY_DOWN || key == KEY_S)
 		ft_move_player(1, 0, data);
-	else if (key == KEY_LEFT || key == KEY_A || key == KEY_a)
+	else if (key == KEY_LEFT || key == KEY_A)
 		ft_move_player(0, -1, data);
-	else if (key == KEY_RIGHT || key == KEY_D || key == KEY_d)
+	else if (key == KEY_RIGHT || key == KEY_D)
 		ft_move_player(0, 1, data);
 	return (0);
 }
