@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:30:19 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/06/01 14:31:00 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/06/01 14:47:48 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_check_map_ber(char const *map)
 	while (j && file[j] == map[i])
 	{
 		j--;
-		i++;
+		i--;
 	}
 	if (j == 0 & file[j] != map[i])
 		return (1);
