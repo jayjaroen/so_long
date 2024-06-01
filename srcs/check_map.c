@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:30:19 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/19 16:07:30 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/06/01 14:47:48 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ int	ft_check_map_ber(char const *map)
 	while (j && file[j] == map[i])
 	{
 		j--;
-		i++;
-		return (0);
+		i--;
 	}
-	return (1);
+	if (j == 0 & file[j] != map[i])
+		return (1);
+	else
+		return (0);
 }
 
 int	check_map_width(t_data *data, char *line)
@@ -47,14 +49,14 @@ int	check_map_width(t_data *data, char *line)
 		data->map_width = line_length;
 	if (data->map_width != line_length)
 	{
-		ft_putstr_fd("Map is not rectangle shape!", 2);
+		ft_putstr_fd("Error: Map is not rectangle shape!", 2);
 		ft_free_map(data);
 		exit(EXIT_FAILURE);
 	}
 	return (0);
 }
 
-void	parse_line_to_map(t_data *data, char *line)
+static void	parse_line_to_map(t_data *data, char *line, int fd)
 {
 	char	**tmp;
 	int		i;
@@ -63,6 +65,7 @@ void	parse_line_to_map(t_data *data, char *line)
 	tmp = malloc(sizeof(char *) * (data->map_height + 1));
 	if (!tmp)
 	{
+		close(fd);
 		ft_free_map(data);
 		exit(EXIT_FAILURE);
 	}
@@ -102,7 +105,7 @@ void	ft_read_file_ber(char *map, t_data *data)
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("Error opening the file\n");
+		perror("Error: opening the file\n");
 		exit(EXIT_FAILURE);
 	}
 	while (1)
@@ -113,7 +116,7 @@ void	ft_read_file_ber(char *map, t_data *data)
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
 		data->map_height++;
-		parse_line_to_map(data, line);
+		parse_line_to_map(data, line, fd);
 	}
 	close(fd);
 	if (!data->map)

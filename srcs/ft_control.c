@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_control.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjaroens <jjaroens@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:07:03 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/25 13:12:59 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/06/01 14:50:43 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,28 @@ void	ft_move_player(int y, int x, t_data *data)
 	ft_check_finish_game(data->current_y, data->current_x, data);
 }
 
+int	ft_check_key_input(int key, t_data *data)
+{
+	if (key == ESC)
+		ft_exit_game(data);
+	else if (key == KEY_UP || key == KEY_W)
+		ft_move_player(-1, 0, data);
+	else if (key == KEY_DOWN || key == KEY_S)
+		ft_move_player(1, 0, data);
+	else if (key == KEY_LEFT || key == KEY_A)
+		ft_move_player(0, -1, data);
+	else if (key == KEY_RIGHT || key == KEY_D)
+		ft_move_player(0, 1, data);
+	return (0);
+}
+
+void	ft_make_move(t_data *data)
+{
+	mlx_hook(data->mlx_win, 2, (1L << 0), &ft_check_key_input, data);
+	mlx_hook(data->mlx_win, 17, (1L << 17), &ft_exit_game, data);
+}
+
+///////////////////MAC///
 // int	ft_check_key_input(int key, t_data *data)
 // {
 // 	if (key == KEY_UP || key == KEY_W || key == KEY_w)
@@ -90,48 +112,48 @@ void	ft_move_player(int y, int x, t_data *data)
 // }
 
 /////////////////MAC///
-int	ft_check_key_input(int key, t_data *data)
-{
-	// ft_printf("%d\n", key);
-	// (void *)data;	
-	// return (key);
-	if (key == 53) // ESC
-	{
-		// function exit game;
-		ft_exit_game(data);
-		return (1);
-	}
-	else if (key == 126 ) // up
-	{
-		// write function moving the player position up// only player move
-		// move up (y - 1, x stay the same postion 0)
-		ft_move_player(-1, 0, data);
-	}
-	else if (key == 125 ) 
-	{
-		// write function moving the player position down
-		// move down (y + 1, x stay the same position 0)
-		// still have problem with downward error
-		ft_move_player(1, 0, data);
-	}
-	else if (key == 123)
-	{
-		// write a function moving the player position leftside
-		// move left (y= 0, x -1 )
-		ft_move_player(0, -1, data);
-	}
-	else if (key == 124)
-	{
-		// move right (y = 0, x + 1) 
-		ft_move_player(0, 1, data);
-	}
-	return (0);
-}
+// int	ft_check_key_input(int key, t_data *data)
+// {
+// 	// ft_printf("%d\n", key);
+// 	// (void *)data;	
+// 	// return (key);
+// 	if (key == 53) // ESC
+// 	{
+// 		// function exit game;
+// 		ft_exit_game(data);
+// 		return (1);
+// 	}
+// 	else if (key == 126 ) // up
+// 	{
+// 		// write function moving the player position up// only player move
+// 		// move up (y - 1, x stay the same postion 0)
+// 		ft_move_player(-1, 0, data);
+// 	}
+// 	else if (key == 125 ) 
+// 	{
+// 		// write function moving the player position down
+// 		// move down (y + 1, x stay the same position 0)
+// 		// still have problem with downward error
+// 		ft_move_player(1, 0, data);
+// 	}
+// 	else if (key == 123)
+// 	{
+// 		// write a function moving the player position leftside
+// 		// move left (y= 0, x -1 )
+// 		ft_move_player(0, -1, data);
+// 	}
+// 	else if (key == 124)
+// 	{
+// 		// move right (y = 0, x + 1) 
+// 		ft_move_player(0, 1, data);
+// 	}
+// 	return (0);
+// }
 
-void	ft_make_move(t_data *data)
-{
-	ft_printf("I am at ft_make_move\n");
-	ft_printf("%d\n", mlx_hook(data->mlx_win, 2, 0, ft_check_key_input, data));
-	// does the second and third variables depending the assignment?
-	mlx_hook(data->mlx_win, 17, 0, ft_exit_game, data);
-}
+// void	ft_make_move(t_data *data)
+// {
+// 	ft_printf("I am at ft_make_move\n");
+// 	ft_printf("%d\n", mlx_hook(data->mlx_win, 2, 0, ft_check_key_input, data));
+// 	// does the second and third variables depending the assignment?
+// 	mlx_hook(data->mlx_win, 17, 0, ft_exit_game, data);
+// }

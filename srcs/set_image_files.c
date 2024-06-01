@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:25:59 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/19 16:23:48 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/06/01 11:45:18 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_set_image(t_data *data)
 	if (!data->wall || !data->collectible || !data->empty_space
 		|| !data->player || !data->exit)
 	{
-		ft_putstr_fd("Image sources not found\n", 2);
+		ft_putstr_fd("Error: Image sources not found\n", 2);
 		ft_free_map(data);
 		exit(EXIT_FAILURE);
 	}

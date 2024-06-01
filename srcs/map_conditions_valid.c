@@ -6,7 +6,7 @@
 /*   By: jjaroens <jjaroens@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:20:02 by jjaroens          #+#    #+#             */
-/*   Updated: 2024/05/19 16:18:59 by jjaroens         ###   ########.fr       */
+/*   Updated: 2024/06/01 11:45:03 by jjaroens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_check_wall_border(t_data *data)
 			{
 				if (data->map[y][x] != '1')
 				{
-					ft_putstr_fd("Wall need to be at border!\n", 2);
+					ft_putstr_fd("Error: Wall need to be at border!\n", 2);
 					ft_free_map(data);
 					exit(EXIT_FAILURE);
 				}
@@ -49,13 +49,13 @@ void	ft_check_con_sprites(t_data *data)
 {
 	if (!data->empty_num || !data->collectible_num)
 	{
-		ft_putstr_fd("Empty space or Collectible not found!\n", 2);
+		ft_putstr_fd("Error: Empty space or Collectible not found!\n", 2);
 		ft_free_map(data);
 		exit(EXIT_FAILURE);
 	}
 	if (data->player_num != 1 || data->exit_num != 1)
 	{
-		ft_putstr_fd("ONLY one player and one exit allowed!\n", 2);
+		ft_putstr_fd("Error: ONLY one player and one exit allowed!\n", 2);
 		ft_free_map(data);
 		exit(EXIT_FAILURE);
 	}
@@ -116,7 +116,7 @@ void	ft_check_map_condition(t_data *data)
 	ft_copy_map(data);
 	if (!ft_check_flood_fill_map(data, data->pos_y, data->pos_x))
 	{
-		ft_putstr_fd("the flood fill function is not successful\n", 2);
+		ft_putstr_fd("Error: the flood fill function is not successful\n", 2);
 		ft_free_map_copy(data->map_copy);
 		ft_free_map(data);
 		exit(EXIT_FAILURE);
